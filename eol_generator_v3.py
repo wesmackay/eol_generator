@@ -13,7 +13,7 @@
 
 import xlrd                      #Excel Read
 import xlsxwriter                #Excel Write
-import sys, os                   #Get scripts current directory
+import os                        #Get scripts current directory
 from tkinter import *            #GUI
 from tkinter import ttk
 import tkinter.messagebox        #Error Message Box
@@ -57,20 +57,20 @@ class createGUI:
       self.sheet_question = Label(self.second_step, text="A) Enter the sheet #'s for both files:")
       self.i_sheet = StringVar()
       self.i_sheet_lbl = Label(self.second_step, text=" --   Input Sheet #: ")
-      self.i_sheet_btn = OptionMenu(self.second_step, self.i_sheet, '1', '2', '3', '4')
+      self.i_sheet_btn = OptionMenu(self.second_step, self.i_sheet, '1', '2', '3', '4', '5')
       self.s_sheet = StringVar()
       self.s_sheet_lbl = Label(self.second_step, text=" --   Search Sheet #: ")
-      self.s_sheet_btn = OptionMenu(self.second_step, self.s_sheet, '1', '2', '3', '4')
+      self.s_sheet_btn = OptionMenu(self.second_step, self.s_sheet, '1', '2', '3', '4', '5')
       # -------------
       self.column_question = Label(self.second_step, text="B) Which column (A,B,C) is your part # located?")
       self.i_column = StringVar()
       self.i_column_lbl = Label(self.second_step, text=" --   Input Column: ")
-      self.i_column_btn = OptionMenu(self.second_step, self.i_column, 'A', 'B', 'C', 'D')
+      self.i_column_btn = OptionMenu(self.second_step, self.i_column, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
       self.s_column = StringVar()
       self.s_column_lbl = Label(self.second_step, text=" --   Search Column: ")
-      self.s_column_btn = OptionMenu(self.second_step, self.s_column, 'A', 'B', 'C', 'D')
+      self.s_column_btn = OptionMenu(self.second_step, self.s_column, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
       # -------------
-      self.columns_to_keep_lbl = Label(self.second_step, text="C) Enter the columns (A,B,C) to keep in the output:")
+      self.columns_to_keep_lbl = Label(self.second_step, text="C) Enter the columns (A,B,C) to copy into the output:")
       self.i_columns_to_keep_lbl = Label(self.second_step, text=" --   Input Columns: ")
       self.i_columns_to_keep = Entry(self.second_step)
       self.s_columns_to_keep_lbl = Label(self.second_step, text=" --   Search Columns: ")
@@ -223,9 +223,9 @@ class createGUI:
          self.s_file_path = os.getcwd() + '\search_file.xlsx'
       self.update(self.i_sheet, "1", "optionmenu")
       self.update(self.s_sheet, "1", "optionmenu")
-      self.update(self.i_column, "C", "optionmenu")
+      self.update(self.i_column, "A", "optionmenu")
       self.update(self.s_column, "A", "optionmenu")
-      self.update(self.i_columns_to_keep, "A,B,C,D", "entry")
+      self.update(self.i_columns_to_keep, "A,B,C", "entry")
       self.update(self.s_columns_to_keep, "O,P,Q", "entry")
 
    # Update values on GUI
@@ -381,9 +381,9 @@ def cross_reference(xcel_list):
    # Apply columns A:G with a center format
    output.sheet.set_column('A:G', None, center_format)
    # Apply a certain width to our columns
-   output.sheet.set_column('A:C', 20)
-   output.sheet.set_column('D:D', 35)
-   output.sheet.set_column('E:G', 12)
+   output.sheet.set_column('A:C', 12)
+   output.sheet.set_column('D:D', 15)
+   output.sheet.set_column('E:G', 20)
 
    ## ----------------------------
    ## Read input file line by line
